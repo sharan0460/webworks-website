@@ -173,3 +173,19 @@ function sendToWhatsApp(event) {
   window.open(whatsappURL, "_blank");
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const serviceTexts = document.querySelectorAll(".service-text");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  serviceTexts.forEach(text => observer.observe(text));
+});
